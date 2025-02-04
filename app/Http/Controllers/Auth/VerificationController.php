@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ConfirmsPasswords;
+use Illuminate\Foundation\Auth\VerifiesEmails;
 
-class ConfirmPasswordController extends Controller
+class VerificationController extends Controller
 {
-    use ConfirmsPasswords;
+    use VerifiesEmails;
 
     /**
-     * Where to redirect users when the intended url fails.
+     * Where to redirect users after verification.
      *
      * @var string
      */
     protected $redirectTo = '/home';
 
-     /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -24,5 +24,7 @@ class ConfirmPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('signed')->only('verify');
+        $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 }

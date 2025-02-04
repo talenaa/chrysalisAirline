@@ -51,7 +51,7 @@ class FlightController extends Controller
                 "departure" => $request->departure,
                 "arrival" => $request->arrival,
                 "airplane_id" => $request->airplaneId,
-                "disposable" => $request->status
+                "disposable" => $request->disposable
             ]
         );
 

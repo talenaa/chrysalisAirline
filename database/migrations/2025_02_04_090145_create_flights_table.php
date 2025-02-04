@@ -16,7 +16,6 @@ return new class extends Migration
             $table->date('date');
             $table->string('departure');
             $table->string('arrival');
-            $table->integer('reserved');
             $table->foreignId('airplane_id')->constrained("airplanes");
             $table->boolean('disposable')->default(value: true);
             $table->timestamps();

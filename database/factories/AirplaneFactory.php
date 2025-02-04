@@ -17,11 +17,8 @@ class AirplaneFactory extends Factory
     public function definition(): array
     {
         return [
-            "date" => fake()->date(),
-            "departure" => fake()->country(),
-            "arrival" => fake()->country(),
-            "airplane_id" => fake()->randomDigitNot(0),
-            "disposable" => fake()->boolean()
+            "name" => fake()->word(),
+            "places" => fake()->numberBetween(10, 200)
         ];
     }
 }

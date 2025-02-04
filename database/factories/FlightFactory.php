@@ -21,7 +21,7 @@ class FlightFactory extends Factory
             "departure" => fake()->country(),
             "arrival" => fake()->country(),
             "airplane_id" => fake()->randomDigitNot(0),
-            "aviable" => fake()->boolean()
+            "disposable" => fake()->boolean()
         ];
     }
 }

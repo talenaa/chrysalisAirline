@@ -16,7 +16,7 @@ class Flight extends Model
         "departure",
         "arrival",
         "airplane_id",
-        "aviable"
+        "disposable"
     ];
 
     public function airplane(): BelongsTo

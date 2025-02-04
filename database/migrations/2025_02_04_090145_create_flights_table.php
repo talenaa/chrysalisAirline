@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('arrival');
             $table->integer('reserved');
             $table->foreignId('airplane_id')->constrained("airplanes");
-            $table->boolean('aviable')->default(value: true);
+            $table->boolean('disposable')->default(value: true);
             $table->timestamps();
         });
     }

@@ -20,16 +20,14 @@ class AirplaneController extends Controller
 
     public function store(Request $request)
     {
-        if ($request->places < 0 || $request->places > 200)
-            return (response("Incorrect parameters", 400));
-        $plane = Airplane::create(
-            [
-                "name" => $request->name,
-                "places" => $request->places
-            ]
-        );
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'places' => 'required|integer|min:0|max:200'
+        ]);
+    
+        $plane = Airplane::create($validatedData);
         
-        return (response()->json($plane, 200));
+        return response()->json($plane, 201);
     }
 
     public function update(Request $request, string $id)

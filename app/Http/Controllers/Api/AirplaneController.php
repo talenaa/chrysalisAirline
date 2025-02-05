@@ -27,7 +27,7 @@ class AirplaneController extends Controller
     
         $plane = Airplane::create([
             'name' => $request->name,
-            'places' =>$request->places
+            'places' => $request->places
         ]);
         
         return response()->json($plane, 201);

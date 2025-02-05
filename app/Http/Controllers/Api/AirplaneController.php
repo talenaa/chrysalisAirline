@@ -20,14 +20,12 @@ class AirplaneController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'places' => 'required|integer|min:0|max:200'
-        ]);
+        if ($request->seats < 0 || $request->seats > 200)
+        return (response("Please, insert the correct range of seats (10 to 200)", 400));
     
         $plane = Airplane::create([
             'name' => $request->name,
-            'places' => $request->places
+            'seats' => $request->seats
         ]);
         
         return response()->json($plane, 201);
@@ -39,7 +37,7 @@ class AirplaneController extends Controller
         $plane->update(
             [
                 "name" => $request->name,
-                "places" => $request->places
+                "seats" => $request->seats
             ]
         );
 

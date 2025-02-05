@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('airplanes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('places');
+            $table->integer('seats');
             $table->timestamps();
         });
     }

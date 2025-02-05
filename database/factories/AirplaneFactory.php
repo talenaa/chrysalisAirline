@@ -18,7 +18,7 @@ class AirplaneFactory extends Factory
     {
         return [
             "name" => fake()->word(),
-            "places" => fake()->numberBetween(10, 200)
+            "seats" => fake()->numberBetween(10, 200)
         ];
     }
 }

@@ -39,7 +39,7 @@ class FlightController extends Controller
                 ]
             );
         }
-        return (response()->json($flight, 200));
+        return (response()->json($flight, 201));
     }
 
     public function update(Request $request, string $id)

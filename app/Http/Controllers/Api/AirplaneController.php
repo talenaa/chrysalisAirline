@@ -25,7 +25,10 @@ class AirplaneController extends Controller
             'places' => 'required|integer|min:0|max:200'
         ]);
     
-        $plane = Airplane::create($validatedData);
+        $plane = Airplane::create([
+            'name' => $request->name,
+            'places' =>$request->places
+        ]);
         
         return response()->json($plane, 201);
     }

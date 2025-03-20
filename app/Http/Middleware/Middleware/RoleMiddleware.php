@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Http\Middleware\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class RoleMiddleware
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     */
+    public function handle(Request $request, Closure $next, string $role)
+    {
+        $user = Auth::user();
+
+        if ($role === 'admin' && (!$user || !$user->isAdmin)) {
+            return redirect('/')->with('error', 'You do not have permission to be in this page');
+        }
+        if ($role === 'user' && (!$user || !$user->isAdmin)) {
+            return redirect('/login')->with('error', 'You must sign up');
+        }
+
+        return $next($request);
+    }
+}

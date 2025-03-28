@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Middleware\Middleware;
+namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class RoleMiddleware
@@ -20,7 +21,8 @@ class RoleMiddleware
         if ($role === 'admin' && (!$user || !$user->isAdmin)) {
             return redirect('/')->with('error', 'You do not have permission to be in this page');
         }
-        if ($role === 'user' && (!$user || !$user->isAdmin)) {
+
+        if ($role === 'user' && (!$user || $user->isAdmin)) {
             return redirect('/login')->with('error', 'You must sign up');
         }
 

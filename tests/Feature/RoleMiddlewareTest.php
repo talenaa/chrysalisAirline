@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class RoleMiddleware extends TestCase
+class RoleMiddlewareTest extends TestCase
 {
     use RefreshDatabase;
 

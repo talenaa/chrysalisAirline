@@ -9,7 +9,7 @@ use App\Models\Airplane;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class AirplaneController extends TestCase
+class AirplaneControllerTest extends TestCase
 {
     use RefreshDatabase;
 

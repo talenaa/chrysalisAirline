@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Validator;
 
 class AuthController extends Controller
 {
@@ -40,7 +41,7 @@ class AuthController extends Controller
 
     public function logout()
     {
-        auth("api")->logut();
+        auth("api")->logout();
         return response()->json(['message' => 'You are succesfully logged out']);
     }
 

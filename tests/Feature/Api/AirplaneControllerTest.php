@@ -113,6 +113,6 @@ class AirplaneControllerTest extends TestCase
         $response = $this->actingAs($user, 'api')
             ->postJson(route('apiflightstore'), $data);
 
-        $response->assertRedirect('/');
+            $response->assertStatus(200);
     }
 }

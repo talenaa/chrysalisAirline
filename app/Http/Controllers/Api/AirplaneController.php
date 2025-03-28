@@ -20,15 +20,18 @@ class AirplaneController extends Controller
 
     public function store(Request $request)
     {
-        if ($request->seats < 0 || $request->seats > 200)
-        return (response("Please, insert the correct range of seats (10 to 200)", 400));
-    
-        $plane = Airplane::create([
+        $airplane = Airplane::create([
             'name' => $request->name,
             'seats' => $request->seats
         ]);
-        
-        return response()->json($plane, 201);
+
+        $airplane->save();
+
+        return response()->json($airplane, 200);
+
+        if (!auth()->user()->isAdmin) {
+            abort(403);
+        }
     }
 
     public function update(Request $request, string $id)

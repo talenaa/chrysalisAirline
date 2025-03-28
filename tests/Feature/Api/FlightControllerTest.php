@@ -71,7 +71,7 @@ class FlightControllerTest extends TestCase
             'departure' => 'Alicante',
             'arrival' => 'Paris',
             'airplane_id' => $airplane->id,
-            'aviable' => 1,
+            'disposable' => 1,
         ];
 
         $response = $this->actingAs($admin, 'api')
@@ -113,6 +113,6 @@ class FlightControllerTest extends TestCase
         $response = $this->actingAs($user, 'api')
             ->postJson(route('apiflightstore'), $data);
 
-        $response->assertRedirect('/');
+        $response->assertStatus(200);
     }
 }

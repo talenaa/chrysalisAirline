@@ -11,63 +11,52 @@ class FlightController extends Controller
 {
     public function index()
     {
-        return (response()->json(Flight::All(), 200));
-    }
+        $flights = Flight::all();
 
-    public function show(string $id)
-    {
-        return (response()->json(Flight::find($id), 200));
+        return response()->json($flights, 200);
     }
 
     public function store(Request $request)
     {
-        $flight = Flight::create(
-            [
-                "date" => $request->date,
-                "departure" => $request->departure,
-                "arrival" => $request->arrival,
-                "airplane_id" => $request->airplaneId,
-                "disposable" => $request->disposable
-            ]
-        );
+        $flight = Flight::create([
+            'date' => $request->date,
+            'departure' => $request->departure,
+            'arrival' => $request->arrival,
+            'airplane_id' => $request->airplane_id,
+            'disposable' => $request->disposable
+        ]);
 
-        if ($flight->airplane->places != 0 && !$flight->disposable)
-        {
-            $flight->update(
-                [
-                    "disposable" => 1
-                ]
-            );
-        }
-        return (response()->json($flight, 201));
+        $flight->save();
+
+        return response()->json($flight, 200);
+    }
+    public function show(string $id)
+    {
+        $flight = Flight::findOrFail($id);
+
+        return response()->json($flight, 200);
     }
 
     public function update(Request $request, string $id)
     {
-        $flight = Flight::find($id);
-        $flight->update(
-            [
-                "date" => $request->date,
-                "departure" => $request->departure,
-                "arrival" => $request->arrival,
-                "airplane_id" => $request->airplaneId,
-                "disposable" => $request->disposable
-            ]
-        );
+        $flight = Flight::findOrFail($id);
 
-        if ($flight->airplane->places != 0 && !$flight->disposable)
-        {
-            $flight->update(
-                [
-                    "disposable" => 1
-                ]
-            );
-        }
-        return (response()->json($flight, 200));
+        $flight->update([
+            'date' => $request->date,
+            'departure' => $request->departure,
+            'arrival' => $request->arrival,
+            'airplane_id' => $request->airplane_id,
+            'disposable' => $request->disposable
+        ]);
+        
+        $flight->save();
+
+        return response()->json($flight, 200);
     }
 
     public function destroy(string $id)
     {
-        Flight::find($id)->delete();
+        $flight = Flight::findOrFail($id);
+        $flight->delete();
     }
 }

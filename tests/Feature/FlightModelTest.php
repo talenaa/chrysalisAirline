@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Models\User;
 use App\Models\Flight;
 use App\Models\Airplane;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -39,5 +40,19 @@ class FlightModelTest extends TestCase
 
         $this->assertInstanceOf(Airplane::class, $flight->airplane);
         $this->assertEquals($airplane->id, $flight->airplane->id);
+    }
+
+    public function test_CheckIfHasManyUsers()
+    {
+        $airplane = Airplane::factory()->create();
+
+        $flight = Flight::factory()->create(['airplane_id' => $airplane->id,]);
+        
+        $users = User::factory()->count(3)->create();
+
+        $flight->users()->attach($users->pluck('id'));
+
+        $this->assertCount(3, $flight->users);
+        $this->assertTrue($flight->users->contains($users[0]));
     }
 }

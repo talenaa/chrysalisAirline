@@ -1,0 +1,54 @@
+@import url(header.css);
+@import url(footer.css);
+
+
+
+.hero {
+    height: 100vh;
+    background: url('hero.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.search {
+    padding: 50px;
+    text-align: center;
+    background: white;
+    margin-top: -30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.search input, .search button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.search button {
+    background: #fbbc05;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search button:hover {
+    background: #e0a800;
+}

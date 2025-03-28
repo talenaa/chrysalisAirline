@@ -31,4 +31,13 @@ class FlightModelTest extends TestCase
             'airplane_id' => $airplane->id,
         ]);
     }
+
+    public function test_CheckIfBelongsToAnAirplane()
+    {
+        $airplane = Airplane::factory()->create();
+        $flight = Flight::factory()->create(['airplane_id' => $airplane->id]);
+
+        $this->assertInstanceOf(Airplane::class, $flight->airplane);
+        $this->assertEquals($airplane->id, $flight->airplane->id);
+    }
 }

@@ -3,7 +3,6 @@
         <div class="nav-links">
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
                     <li><a href="#destinations">Destinations</a></li>
                     <li><a href="#book">Book a Flight</a></li>
                     <li><a href="#contact">Contact</a></li>

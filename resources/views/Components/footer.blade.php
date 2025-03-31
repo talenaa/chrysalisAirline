@@ -1,3 +1,3 @@
 <footer>
-    <p>&copy; 2025 Skyline Airlines. All rights reserved.</p>
+    <p>&copy; 2025 Chrysalis Airlines. All rights reserved.</p>
 </footer>

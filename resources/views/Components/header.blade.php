@@ -16,7 +16,7 @@
                         @endif
 
                         @if (Route::has('register'))
-                            <button><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></button>
+                            <button><a href="{{ route('register') }}">{{ __('Register') }}</a></button>
                         @endif
             </div>
         </div>
